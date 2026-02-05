@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - BlueSky Siding & Cladding Inc.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A2463;
+            --secondary: #3E92CC;
+            --accent: #1E88E5;
+            --dark: #0D1B2A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--light);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .cta-button {
+            background: var(--secondary);
+            color: white !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .page-header {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            padding: 5rem 2rem 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .about-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .intro-card {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .intro-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-card p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            line-height: 1.9;
+            max-width: 900px;
+            margin: 0 auto 1rem;
+        }
+
+        .materials-showcase {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+            color: white;
+        }
+
+        .materials-showcase h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .materials-showcase-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .materials-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn-materials {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            border: 2px solid white;
+            margin: 0 0.5rem;
+        }
+
+        .btn-materials:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .who-we-are {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 5rem;
+        }
+
+        .who-we-are h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .who-we-are-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .who-we-are p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.9;
+            max-width: 1000px;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+        }
+
+        .process-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .process-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .process-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .process-number {
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .process-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .process-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .process-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .quote-cta {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .quote-cta h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .quote-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-quote {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            background: white;
+            color: var(--secondary);
+            border: 2px solid white;
+        }
+
+        .btn-quote:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer h3 span {
+            color: var(--secondary);
+        }
+
+        .footer p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .intro-card, .materials-showcase, .who-we-are, .quote-cta {
+                padding: 2.5rem 2rem;
+            }
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            .quote-buttons {
+                flex-direction: column;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">BlueSky <span>Siding</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="quote.html" class="cta-button">Quotation Request</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div>
+            <h1>About BlueSky Siding & Cladding</h1>
+            <p>Siding & Cladding Contractor Based in Ontario, Canada</p>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="intro-card">
+            <h2>Making Your Building Shine</h2>
+            <p>At BlueSky Siding & Cladding, we transform your vision into reality with premium exterior solutions. We've assembled a team of expert installers, skilled craftsmen, and industry professionals who specialize in building envelope systems.</p>
+            <p>From initial design concepts to sourcing premium materials and delivering professional installation services, we provide comprehensive solutions that make your project stand out.</p>
+        </div>
+
+        <div class="materials-showcase">
+            <h2>Materials & Services</h2>
+            <p class="materials-showcase-subtitle">We work with premium materials and deliver excellence at every stage</p>
+            
+            <div class="materials-cta">
+                <a href="products.html" class="btn-materials">View All Products</a>
+                <a href="contact.html" class="btn-materials">Request for Quotation</a>
+            </div>
+        </div>
+
+        <div class="who-we-are">
+            <h2>WHO WE ARE</h2>
+            <p class="who-we-are-subtitle">Premier Siding & Cladding Contractor Serving Ontario</p>
+            <p>BlueSky Siding & Cladding Inc. is your trusted partner for all exterior cladding and siding needs in Ontario. We bring together experienced contractors, innovative designers, and reliable suppliers to create a one-stop solution for residential and commercial projects.</p>
+            <p>Our network includes partnerships with the most reputable manufacturers across North America and Europe, ensuring you receive materials that meet the highest quality standards. From supply to design to installation, we handle every aspect with precision and care.</p>
+            <p>With years of expertise in the building envelope industry, we understand that every project is unique. That's why we offer customized solutions tailored to your specific requirements, timeline, and budget.</p>
+        </div>
+
+        <div class="process-section">
+            <h2>Our Proven Process</h2>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-number">1</div>
+                    <div class="process-icon">📋</div>
+                    <h3>Consultation</h3>
+                    <p>Every project begins with a thorough consultation. Our advisors listen to your needs, assess your building, and help you select the ideal materials and finishes for your project.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">2</div>
+                    <div class="process-icon">📐</div>
+                    <h3>Estimation</h3>
+                    <p>We provide precise measurements and detailed cost estimates. Our team ensures accuracy and transparency, so you know exactly what to expect before work begins.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">3</div>
+                    <div class="process-icon">🎨</div>
+                    <h3>Design</h3>
+                    <p>Our design experts offer material consultation and help you choose the perfect combination of products and finishes. We provide 3D visualization when needed to bring your vision to life.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">4</div>
+                    <div class="process-icon">🚚</div>
+                    <h3>Supply</h3>
+                    <p>We source materials responsibly from trusted local and international suppliers. All products meet Canadian quality standards, and you're never limited to a single brand or manufacturer.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">5</div>
+                    <div class="process-icon">🔨</div>
+                    <h3>Installation</h3>
+                    <p>This is where we truly excel. Our skilled in-house team handles your project with exceptional craftsmanship and attention to detail. We deliver on time, every time, with superior quality.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-number">6</div>
+                    <div class="process-icon">🛡️</div>
+                    <h3>Support</h3>
+                    <p>We know building materials inside and out. Our comprehensive warranty covers both materials and workmanship, and our after-sales service is always here when you need us.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-cta">
+            <h2>Request for Quotation</h2>
+            <p>Ready to transform your building's exterior? Count on our experience and knowledge – from generating design ideas to project delivery and ongoing support.</p>
+            <div class="quote-buttons">
+                <a href="contact.html" class="btn-quote">Get Your Free Quote</a>
+                <a href="tel:+14167415140" class="btn-quote">Call (416) 741-5140</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h3>BlueSky <span>Siding</span></h3>
+                <p>Leading provider of premium metal siding and cladding solutions. We combine quality materials with expert craftsmanship to deliver outstanding results.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="services.html">Metal Cladding</a></li>
+                    <li><a href="services.html">Aluminum Siding</a></li>
+                    <li><a href="services.html">Custom Fabrication</a></li>
+                    <li><a href="services.html">Installation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+14167415140">(416) 741-5140</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#335a5d555c73515f465640584a1e405a575a5d541d505c5e"><span class="__cf_email__" data-cfemail="1c75727a735c7e7069796f7765316f757875727b327f7371">[email&#160;protected]</span></a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="f

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - BlueSky Siding & Cladding Inc.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A2463;
+            --secondary: #3E92CC;
+            --accent: #1E88E5;
+            --dark: #0D1B2A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--light);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .cta-button {
+            background: var(--secondary);
+            color: white !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .page-header {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            padding: 5rem 2rem 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .contact-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .contact-intro h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-detail {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0.5rem 0;
+        }
+
+        .contact-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .form-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .form-section .subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-form {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group label .required {
+            color: #dc3545;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload {
+            padding: 2rem;
+            border: 2px dashed var(--secondary);
+            border-radius: 10px;
+            background: rgba(62, 146, 204, 0.05);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            background: rgba(62, 146, 204, 0.1);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .privacy-note {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(62, 146, 204, 0.05);
+            border-radius: 10px;
+        }
+
+        .map-section {
+            margin-top: 3rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            height: 450px;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer h3 span {
+            color: var(--secondary);
+        }
+
+        .footer p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">BlueSky <span>Siding</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
+                <li><a href="quote.html" class="cta-button">Quotation Request</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div>
+            <h1>Contact BlueSky Siding Today!</h1>
+            <p>If you have an upcoming cladding or siding project, contact us today. One of our technical advisors will contact you shortly.</p>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <div class="contact-intro">
+            <h2>Talk to a Specialist</h2>
+            <p>We're here to help with your siding and cladding needs. Whether you require a quotation, an estimate, or have questions about our services, our team is ready to assist you.</p>
+        </div>
+
+        <div class="contact-info-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Call Us</h3>
+                <p>Speak directly with our technical team</p>
+                <div class="contact-detail"><a href="tel:+14167415140">(416) 741-5140</a></div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Visit Our Office</h3>
+                <p>Come visit us by appointment</p>
+                <div class="contact-detail">17, 20 Baywood Road<br>Etobicoke, ON M9V 4A8</div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email Us</h3>
+                <p>Send us your inquiries</p>
+                <div class="contact-detail"><a href="/cdn-cgi/l/email-protection#0a63646c654a68667f6f7961732779636e63646d24696567"><span class="__cf_email__" data-cfemail="442d2a222b0426283121372f3d69372d202d2a236a272b29">[email&#160;protected]</span></a></div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Discuss Your Current OR Upcoming Project with Us</h2>
+            <p class="subtitle">Please provide some general information about your project. You can also attach PDF files, photos, or drawings to help us understand your needs better.</p>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name <span class="required">*</span></label>
+                        <input type="text" name="name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" name="phone" required placeholder="(123) 456-7890">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Address</label>
+                        <input type="text" name="address" placeholder="Project location">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Please Choose a Product <span class="required">*</span></label>
+                        <select name="product" required>
+                            <option value="">Select a product...</option>
+                            <option value="aluminum-composite">Aluminum Composite Panels</option>
+                            <option value="aluminum-plate">Aluminum Plate Panels</option>
+                            <option value="cassette">Cassette Panels (Metal Siding)</option>
+                            <option value="corrugated">Corrugated Wall System</option>
+                            <option value="hpl">High-Pressure Laminate (HPL)</option>
+                            <option value="phenolic">Phenolic</option>
+                            <option value="stone-concrete">Stone & Concrete Wall Panels</option>
+                            <option value="curtain-wall">Curtain-Wall OR Window-Wall</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Type <span class="required">*</span></label>
+                        <select name="project-type" required>
+                            <option value="">Select project type...</option>
+                            <option value="custom-house">Custom House OR Townhouse</option>
+                            <option value="multi-residential">Multi-residential OR Condominium</option>
+                            <option value="retail">Retail, Restaurant, Auto shop, etc.</option>
+                            <option value="office">Office, Medical Office, Bank, etc.</option>
+                            <option value="industrial">Industrial OR Warehouse</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Your Message <span class="required">*</span></label>
+                    <textarea name="message" required placeholder="Tell us about your project..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Project Files (Photos OR Drawings)</label>
+                    <label for="fileUpload" class="file-upload">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📁</div>
+                        <div><strong>Click to upload</strong> or drag and drop</div>
+                        <div style="font-size: 0.85rem; color: var(--gray); margin-top: 0.3rem;">PDF, JPG, PNG, DWG files accepted</div>
+                        <input type="file" id="fileUpload" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.dwg">
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">SUBMIT</button>
+
+                <div class="privacy-note">
+                    🔒 <strong>Your information is safe with us.</strong> We NEVER share your personal information with anyone or any third party companies or individuals.
+                </div>
+            </form>
+        </div>
+
+        <div class="map-section">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2881.8676589799447!2d-79.57267892346195!3d43.71664447110658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b39b5e8a8a8a9%3A0x9e8c8f8e8c8f8e8c!2s20%20Baywood%20Rd%2C%20Etobicoke%2C%20ON%20M9V%204A8%2C%20Canada!5e0!3m2!1sen!2sca!4v1738765432100!5m2!1sen!2sca"
+                allowfullscreen="" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h3>BlueSky <span>Siding</span></h3>
+                <p>Leading provider of premium metal siding and cladding solutions. We combine quality materials with expert craftsmanship to deliver outstanding results.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="services.html">Metal Cladding</a></li>
+                    <li><a href="services.html">Aluminum Siding</a></li>
+                    <li><a href="services.html">Custom Fabrication</a></li>
+                    <li><a href="services.html">Installation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+14167415140">(416) 741-5140</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#2b42454d446b49475e4e5840520658424f42454c05484446"><span class="__cf_email__" data-cfemail="30595e565f70525c4555435b491d435954595e571e535f5d">[email&#160;protected]</span></a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BlueSky Siding & Cladding Inc. All rights reserved.</p>
+        </div>
+    </footer>
