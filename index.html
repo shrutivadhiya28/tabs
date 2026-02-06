@@ -93,13 +93,88 @@
             display: flex;
             align-items: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
         }
 
         .hero-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 4rem 2rem;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease;
+        }
+
+        .hero-image {
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(62, 146, 204, 0.3), rgba(30, 136, 229, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 20px;
+            border: 3px dashed rgba(255,255,255,0.3);
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .hero h1 {
@@ -338,8 +413,22 @@
             .nav-links {
                 display: none;
             }
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-image {
+                order: -1;
+            }
+            .hero-image-placeholder {
+                height: 300px;
+                font-size: 1rem;
+            }
             .hero h1 {
                 font-size: 2.2rem;
+            }
+            .hero-buttons {
+                justify-content: center;
             }
             .features-grid {
                 grid-template-columns: 1fr;
@@ -368,11 +457,23 @@
 
     <section class="hero">
         <div class="hero-container">
-            <h1>Premium Metal Siding & <span>Cladding Solutions</span></h1>
-            <p>Transform your building's exterior with high-quality aluminum and metal cladding. Expert installation, superior materials, and unmatched craftsmanship.</p>
-            <div class="hero-buttons">
-                <a href="services.html" class="btn-primary">Our Services</a>
-                <a href="contact.html" class="btn-secondary">Get a Quote</a>
+            <div class="hero-content">
+                <h1>Premium Metal Siding & <span>Cladding Solutions</span></h1>
+                <p>Transform your building's exterior with high-quality aluminum and metal cladding. Expert installation, superior materials, and unmatched craftsmanship.</p>
+                <div class="hero-buttons">
+                    <a href="services.html" class="btn-primary">Our Services</a>
+                    <a href="contact.html" class="btn-secondary">Get a Quote</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <!-- REPLACE THIS PLACEHOLDER WITH YOUR ACTUAL IMAGE -->
+                    <!-- <img src="images/hero-building.jpg" alt="BlueSky Siding Project"> -->
+                    <div class="hero-image-placeholder">
+                        📸 Add Your Siding Project Photo Here<br>
+                        <small style="font-size: 0.9rem; margin-top: 1rem; display: block;">Replace this with: &lt;img src="images/hero-building.jpg" alt="BlueSky Siding"&gt;</small>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -450,7 +551,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div>
-                <h3>BlueSky <span>Siding</span></h3>
+                <h3>BlueSky Siding & <span>Cladding Inc.</span></h3>
                 <p>Leading provider of premium metal siding and cladding solutions. We combine quality materials with expert craftsmanship to deliver outstanding results.</p>
             </div>
             <div>
@@ -475,10 +576,15 @@
                 <h4>Contact</h4>
                 <ul class="footer-links">
                     <li><a href="tel:+14167415140">(416) 741-5140</a></li>
-                    <li><a href="/cdn-cgi/l/email-protection#dab3b4bcb59ab8b6afbfa9b1a3f7a9b3beb3b4bdf4b9b5b7"><span class="__cf_email__" data-cfemail="b0d9ded6dff0d2dcc5d5c3dbc99dc3d9d4d9ded79ed3dfdd">[email&#160;protected]</span></a></li>
+                    <li><a href="mailto:info@bluesky-siding.com">info@bluesky-siding.com</a></li>
                     <li><a href="careers.html">Careers</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </div>
         </div>
-        <div class="f
+        <div class="footer-bottom">
+            <p>&copy; 2022 BlueSky Siding & Cladding Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

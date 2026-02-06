@@ -55,6 +55,21 @@
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-image {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .logo span {
@@ -221,77 +236,339 @@
             text-align: center;
         }
 
+        .process-section {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
         .process-section h2 {
             font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             color: var(--primary);
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
 
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+        .process-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray);
             margin-bottom: 5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .process-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+        /* Animated progress line */
+        .progress-line {
             position: relative;
+            max-width: 1000px;
+            margin: 0 auto 5rem;
+            height: 6px;
+            background: #E0E0E0;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .process-card:hover {
-            transform: translateY(-10px);
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            width: 0;
+            border-radius: 10px;
+            animation: fillProgress 2s ease-out forwards;
         }
 
-        .process-number {
+        @keyframes fillProgress {
+            to { width: 100%; }
+        }
+
+        /* Steps container */
+        .process-steps-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-step-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .process-step-wrapper:nth-child(1) { animation-delay: 0.1s; }
+        .process-step-wrapper:nth-child(2) { animation-delay: 0.2s; }
+        .process-step-wrapper:nth-child(3) { animation-delay: 0.3s; }
+        .process-step-wrapper:nth-child(4) { animation-delay: 0.4s; }
+        .process-step-wrapper:nth-child(5) { animation-delay: 0.5s; }
+        .process-step-wrapper:nth-child(6) { animation-delay: 0.6s; }
+        .process-step-wrapper:nth-child(7) { animation-delay: 0.7s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Alternate layout - image left/right */
+        .process-step-wrapper:nth-child(even) {
+            direction: rtl;
+        }
+
+        .process-step-wrapper:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        /* Image container with floating effect */
+        .step-image-box {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transition: all 0.5s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .step-image-box:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .process-step-wrapper:nth-child(even) .step-image-box {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .step-image-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(10, 36, 99, 0.3), rgba(62, 146, 204, 0.3));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+        }
+
+        .step-image-box:hover::before {
+            opacity: 1;
+        }
+
+        .step-image-box img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .step-image-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .step-image-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-image-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .placeholder-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .placeholder-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* Number badge with pulse effect */
+        .step-number-badge {
             position: absolute;
             top: -20px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            left: -20px;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: white;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(62, 146, 204, 0.5);
+            border: 5px solid white;
+            animation: pulse 2s infinite;
         }
 
-        .process-icon {
-            width: 70px;
-            height: 70px;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Content box */
+        .step-content-box {
+            padding: 2rem;
+        }
+
+        .step-label {
+            display: inline-block;
             background: linear-gradient(135deg, var(--secondary), var(--accent));
-            border-radius: 15px;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-content-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .step-description {
+            color: var(--gray);
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .step-features {
+            list-style: none;
+        }
+
+        .step-features li {
+            padding: 0.8rem 0;
+            color: var(--dark);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .step-features li::before {
+            content: '✓';
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
-        .process-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+        /* Decorative elements */
+        .step-decorator {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(62, 146, 204, 0.1), rgba(30, 136, 229, 0.1));
+            z-index: -1;
         }
 
-        .process-card p {
-            color: var(--gray);
-            line-height: 1.8;
-            font-size: 1.05rem;
+        .decorator-1 { top: -50px; right: -50px; animation: rotate 20s linear infinite; }
+        .decorator-2 { bottom: -50px; left: -50px; animation: rotate 15s linear infinite reverse; }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 968px) {
+            .process-step-wrapper,
+            .process-step-wrapper:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                direction: ltr;
+            }
+
+            .step-image-box img,
+            .step-image-placeholder {
+                height: 350px;
+            }
+
+            .step-content-box h3 {
+                font-size: 2rem;
+            }
+
+            .step-number-badge {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .process-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .step-content-box {
+                padding: 1rem;
+            }
+
+            .step-content-box h3 {
+                font-size: 1.8rem;
+            }
+
+            .step-description {
+                font-size: 1rem;
+            }
         }
 
         .quote-cta {
@@ -427,7 +704,10 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">BlueSky <span>Siding</span></a>
+            <a href="index.html" class="logo">
+                <!-- <img src="images/logo.png" alt="BlueSky Siding & Cladding Inc." class="logo-image"> -->
+                <div class="logo-text">BlueSky <span>Siding</span></div>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About</a></li>
@@ -474,47 +754,166 @@
 
         <div class="process-section">
             <h2>Our Proven Process</h2>
-            <div class="process-grid">
-                <div class="process-card">
-                    <div class="process-number">1</div>
-                    <div class="process-icon">📋</div>
-                    <h3>Consultation</h3>
-                    <p>Every project begins with a thorough consultation. Our advisors listen to your needs, assess your building, and help you select the ideal materials and finishes for your project.</p>
+            <p class="process-subtitle">Seven carefully crafted steps to transform your vision into reality with excellence, precision, and care</p>
+            
+            <!-- Animated progress line -->
+            <div class="progress-line">
+                <div class="progress-bar"></div>
+            </div>
+
+            <div class="process-steps-container">
+                <!-- Step 1: Consultation -->
+                <div class="process-step-wrapper">
+                    <div class="step-image-box">
+                        <div class="step-number-badge">1</div>
+                        <!-- ADD IMAGE: <img src="images/step1-consultation.jpg" alt="Consultation"> -->
+                        <div class="step-image-placeholder">
+                            <div class="placeholder-icon">📋</div>
+                            <div class="placeholder-text">Add Consultation Photo</div>
+                        </div>
+                    </div>
+                    <div class="step-content-box">
+                        <span class="step-label">Step One</span>
+                        <h3>Consultation</h3>
+                        <p class="step-description">Every successful project begins with understanding. Our expert advisors take time to listen to your needs, assess your building, and discuss your vision for the perfect exterior solution.</p>
+                        <ul class="step-features">
+                            <li>Detailed needs assessment</li>
+                            <li>Building evaluation</li>
+                            <li>Material recommendations</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="process-card">
-                    <div class="process-number">2</div>
-                    <div class="process-icon">📐</div>
-                    <h3>Estimation</h3>
-                    <p>We provide precise measurements and detailed cost estimates. Our team ensures accuracy and transparency, so you know exactly what to expect before work begins.</p>
+                <!-- Step 2: Estimation -->
+                <div class="process-step-wrapper">
+                    <div class="step-image-box">
+                        <div class="step-number-badge">2</div>
+                        <!-- ADD IMAGE: <img src="images/step2-estimation.jpg" alt="Estimation"> -->
+                        <div class="step-image-placeholder">
+                            <div class="placeholder-icon">📐</div>
+                            <div class="placeholder-text">Add Estimation Photo</div>
+                        </div>
+                    </div>
+                    <div class="step-content-box">
+                        <span class="step-label">Step Two</span>
+                        <h3>Estimation</h3>
+                        <p class="step-description">Transparency is our priority. We provide accurate measurements and detailed cost estimates, ensuring you know exactly what to expect with no hidden surprises.</p>
+                        <ul class="step-features">
+                            <li>Precise measurements</li>
+                            <li>Detailed pricing breakdown</li>
+                            <li>Timeline projections</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="process-card">
-                    <div class="process-number">3</div>
-                    <div class="process-icon">🎨</div>
-                    <h3>Design</h3>
-                    <p>Our design experts offer material consultation and help you choose the perfect combination of products and finishes. We provide 3D visualization when needed to bring your vision to life.</p>
+                <!-- Step 3: Design -->
+                <div class="process-step-wrapper">
+                    <div class="step-image-box">
+                        <div class="step-number-badge">3</div>
+                        <!-- ADD IMAGE: <img src="images/step3-design.jpg" alt="Design"> -->
+                        <div class="step-image-placeholder">
+                            <div class="placeholder-icon">🎨</div>
+                            <div class="placeholder-text">Add Design Photo</div>
+                        </div>
+                    </div>
+                    <div class="step-content-box">
+                        <span class="step-label">Step Three</span>
+                        <h3>Design</h3>
+                        <p class="step-description">Our design experts bring your vision to life. We help you select the perfect materials, colors, and finishes, with 3D visualization to ensure you love the final result.</p>
+                        <ul class="step-features">
+                            <li>Material selection guidance</li>
+                            <li>3D visualization</li>
+                            <li>Color & finish consultation</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="process-card">
-                    <div class="process-number">4</div>
-                    <div class="process-icon">🚚</div>
-                    <h3>Supply</h3>
-                    <p>We source materials responsibly from trusted local and international suppliers. All products meet Canadian quality standards, and you're never limited to a single brand or manufacturer.</p>
+                <!-- Step 4: Supply -->
+                <div class="process-step-wrapper">
+                    <div class="step-image-box">
+                        <div class="step-number-badge">4</div>
+                        <!-- ADD IMAGE: <img src="images/step4-supply.jpg" alt="Supply"> -->
+                        <div class="step-image-placeholder">
+                            <div class="placeholder-icon">🚚</div>
+                            <div class="placeholder-text">Add Supply Photo</div>
+                        </div>
+                    </div>
+                    <div class="step-content-box">
+                        <span class="step-label">Step Four</span>
+                        <h3>Supply</h3>
+                        <p class="step-description">We source premium materials from trusted suppliers across North America and Europe. All products meet rigorous Canadian quality standards for your peace of mind.</p>
+                        <ul class="step-features">
+                            <li>Premium quality materials</li>
+                            <li>Canadian standards certified</li>
+                            <li>Reliable delivery scheduling</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="process-card">
-                    <div class="process-number">5</div>
-                    <div class="process-icon">🔨</div>
-                    <h3>Installation</h3>
-                    <p>This is where we truly excel. Our skilled in-house team handles your project with exceptional craftsmanship and attention to detail. We deliver on time, every time, with superior quality.</p>
+                <!-- Step 5: Installation -->
+                <div class="process-step-wrapper">
+                    <div class="step-image-box">
+                        <div class="step-number-badge">5</div>
+                        <!-- ADD IMAGE: <img src="images/step5-installation.jpg" alt="Installation"> -->
+                        <div class="step-image-placeholder">
+                            <div class="placeholder-icon">🔨</div>
+                            <div class="placeholder-text">Add Installation Photo</div>
+                        </div>
+                    </div>
+                    <div class="step-content-box">
+                        <span class="step-label">Step Five</span>
+                        <h3>Installation</h3>
+                        <p class="step-description">This is where we truly shine. Our skilled craftsmen handle every detail with precision and care, delivering exceptional quality on time, every time.</p>
+                        <ul class="step-features">
+                            <li>Expert certified installers</li>
+                            <li>Quality workmanship guaranteed</li>
+                            <li>On-time project completion</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="process-card">
-                    <div class="process-number">6</div>
-                    <div class="process-icon">🛡️</div>
-                    <h3>Support</h3>
-                    <p>We know building materials inside and out. Our comprehensive warranty covers both materials and workmanship, and our after-sales service is always here when you need us.</p>
+                <!-- Step 6: Support -->
+                <div class="process-step-wrapper">
+                    <div class="step-image-box">
+                        <div class="step-number-badge">6</div>
+                        <!-- ADD IMAGE: <img src="images/step6-support.jpg" alt="Support"> -->
+                        <div class="step-image-placeholder">
+                            <div class="placeholder-icon">🛡️</div>
+                            <div class="placeholder-text">Add Support Photo</div>
+                        </div>
+                    </div>
+                    <div class="step-content-box">
+                        <span class="step-label">Step Six</span>
+                        <h3>Support</h3>
+                        <p class="step-description">Our comprehensive warranty and dedicated support team ensure your complete satisfaction. We're always here when you need us, standing behind our work.</p>
+                        <ul class="step-features">
+                            <li>Comprehensive warranty coverage</li>
+                            <li>Responsive customer service</li>
+                            <li>Technical support available</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 7: Maintenance -->
+                <div class="process-step-wrapper">
+                    <div class="step-image-box">
+                        <div class="step-number-badge">7</div>
+                        <!-- ADD IMAGE: <img src="images/step7-maintenance.jpg" alt="Maintenance"> -->
+                        <div class="step-image-placeholder">
+                            <div class="placeholder-icon">🔧</div>
+                            <div class="placeholder-text">Add Maintenance Photo</div>
+                        </div>
+                    </div>
+                    <div class="step-content-box">
+                        <span class="step-label">Step Seven</span>
+                        <h3>Maintenance</h3>
+                        <p class="step-description">Our commitment extends beyond installation. We provide ongoing maintenance services to keep your siding looking pristine and performing excellently for years to come.</p>
+                        <ul class="step-features">
+                            <li>Scheduled maintenance programs</li>
+                            <li>Repair services available</li>
+                            <li>Long-term performance guarantee</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -532,7 +931,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div>
-                <h3>BlueSky <span>Siding</span></h3>
+                <h3>BlueSky Siding & <span>Cladding Inc.</span></h3>
                 <p>Leading provider of premium metal siding and cladding solutions. We combine quality materials with expert craftsmanship to deliver outstanding results.</p>
             </div>
             <div>
@@ -563,4 +962,9 @@
                 </ul>
             </div>
         </div>
-        <div class="f
+        <div class="footer-bottom">
+            <p>&copy; 2022-2026 BlueSky Siding & Cladding Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
