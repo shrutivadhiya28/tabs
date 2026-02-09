@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - BlueSky Siding & Cladding Inc.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A2463;
+            --secondary: #3E92CC;
+            --accent: #1E88E5;
+            --dark: #0D1B2A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--light);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-image {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .cta-button {
+            background: var(--secondary);
+            color: white !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .page-header {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Diagram Section - CLADDERS Style */
+        .diagram-section {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .diagram-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .diagram-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .diagram-placeholder {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .building-illustration {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .building-shape {
+            width: 100%;
+            max-width: 700px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .building-note {
+            position: absolute;
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            font-weight: 600;
+            color: var(--primary);
+            z-index: 10;
+            border: 2px solid var(--secondary);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .building-note.top-left {
+            top: 50px;
+            left: 50px;
+            animation-delay: 0s;
+        }
+
+        .building-note.top-right {
+            top: 50px;
+            right: 50px;
+            animation-delay: 0.3s;
+        }
+
+        .building-note.middle-left {
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+            animation-delay: 0.6s;
+        }
+
+        .building-note.middle-right {
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            animation-delay: 0.9s;
+        }
+
+        .building-note.bottom-left {
+            bottom: 50px;
+            left: 50px;
+            animation-delay: 1.2s;
+        }
+
+        .note-label {
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .diagram-description {
+            text-align: center;
+            max-width: 900px;
+            margin: 2rem auto 0;
+        }
+
+        .diagram-description strong {
+            color: var(--primary);
+        }
+
+        .products-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .products-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .products-intro h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .products-intro p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: var(--secondary);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-content {
+            padding: 2.5rem;
+        }
+
+        .product-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            color: var(--dark);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .materials-section {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 5rem;
+        }
+
+        .materials-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .material-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: var(--light);
+            transition: all 0.3s;
+        }
+
+        .material-item:hover {
+            background: rgba(62, 146, 204, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .material-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .material-item h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .material-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .applications-section {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .applications-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .applications-section p {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .application-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .application-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .application-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .application-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            background: white;
+            color: var(--secondary);
+            border: 2px solid white;
+        }
+
+        .btn-cta:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer h3 span {
+            color: var(--secondary);
+        }
+
+        .footer p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-buttons {
+                flex-direction: column;
+            }
+            .btn-primary, .btn-secondary {
+                min-width: 100%;
+            }
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .building-note {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+            .building-note.top-left,
+            .building-note.top-right,
+            .building-note.middle-left,
+            .building-note.middle-right,
+            .building-note.bottom-left {
+                position: static;
+                margin: 0.5rem;
+                display: inline-block;
+            }
+            .building-illustration {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .diagram-placeholder {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <!-- <img src="images/logo.png" alt="BlueSky Siding & Cladding Inc." class="logo-image"> -->
+                <div class="logo-text">BlueSky <span>Siding</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="quote.html" class="cta-button">Quotation Request</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div>
+            <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.9; margin-bottom: 0.5rem;">Toronto & GTA</p>
+            <h1>Modern Cladding Products & Services in Toronto, Canada</h1>
+            <p style="font-size: 1.3rem; margin-top: 1.5rem;">Your Siding Contractor & Supplier in Etobicoke, ON</p>
+        </div>
+    </div>
+
+    <!-- Featured Diagram Section -->
+    <section class="diagram-section">
+        <div class="diagram-container">
+            <div class="diagram-content">
+                <div class="diagram-placeholder">
+                    <div class="building-illustration">
+                        <div class="building-note top-left">
+                            <div class="note-label">ACM Panels</div>
+                            <div class="note-arrow"></div>
+                        </div>
+                        <div class="building-note top-right">
+                            <div class="note-label">Eavestrough</div>
+                            <div class="note-arrow"></div>
+                        </div>
+                        <div class="building-note middle-left">
+                            <div class="note-label">Wall Cladding</div>
+                            <div class="note-arrow"></div>
+                        </div>
+                        <div class="building-note middle-right">
+                            <div class="note-label">Soffit & Fascia</div>
+                            <div class="note-arrow"></div>
+                        </div>
+                        <div class="building-note bottom-left">
+                            <div class="note-label">Coping</div>
+                            <div class="note-arrow"></div>
+                        </div>
+                        <div class="building-shape">
+                            <div style="text-align: center; padding: 3rem; color: white;">
+                                <div style="font-size: 4rem; margin-bottom: 1rem;">🏢</div>
+                                <div style="font-size: 1.2rem; font-weight: 600;">ADD YOUR BUILDING DIAGRAM HERE</div>
+                                <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Replace with actual architectural image</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="diagram-description">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                        Welcome to <strong>BlueSky Siding & Cladding Inc.</strong> We design, supply, and install a very wide range of high-quality siding and cladding products, including aluminum composite panels, metal siding, cassette panels, corrugated systems, HPL, and more. Our skilled team focuses on quality, durability, aesthetics, and sustainability, specifically suited for Toronto's climate. We provide reliable and professional facade solutions for commercial, industrial, and residential projects.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="products-intro">
+            <h2>Top 5 Modern Exterior Siding & Cladding Products</h2>
+            <p>Premium materials designed for Toronto's climate - Quality, durability, and aesthetics</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Aluminum Composite Panels -->
+            <div class="product-card">
+                <div class="product-image">
+                    🏢
+                    <span class="product-badge">Popular</span>
+                </div>
+                <div class="product-content">
+                    <h3>Aluminum Composite Panels (ACP)</h3>
+                    <p>Lightweight yet durable panels combining aluminum sheets with a core material. Perfect for modern architectural designs with superior weather resistance.</p>
+                    <ul class="product-features">
+                        <li>Lightweight and easy to install</li>
+                        <li>Excellent weather resistance</li>
+                        <li>Wide range of colors and finishes</li>
+                        <li>Low maintenance requirements</li>
+                    </ul>
+                    <div class="product-buttons">
+                        <a href="quote.html" class="btn-primary">Get Quote</a>
+                        <a href="contact.html" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aluminum Plate Panels -->
+            <div class="product-card">
+                <div class="product-image">
+                    ⚡
+                    <span class="product-badge">Premium</span>
+                </div>
+                <div class="product-content">
+                    <h3>Aluminum Plate Panels</h3>
+                    <p>Solid aluminum panels offering exceptional strength and durability. Ideal for high-traffic areas and demanding commercial applications.</p>
+                    <ul class="product-features">
+                        <li>Superior strength and durability</li>
+                        <li>Corrosion resistant</li>
+                        <li>Modern aesthetic appeal</li>
+                        <li>Long-lasting performance</li>
+                    </ul>
+                    <div class="product-buttons">
+                        <a href="quote.html" class="btn-primary">Get Quote</a>
+                        <a href="contact.html" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cassette Panels -->
+            <div class="product-card">
+                <div class="product-image">🔲</div>
+                <div class="product-content">
+                    <h3>Cassette Panels (Metal Siding)</h3>
+                    <p>Modular metal panels that provide a sleek, contemporary appearance. Versatile solution for both new construction and renovation projects.</p>
+                    <ul class="product-features">
+                        <li>Quick and easy installation</li>
+                        <li>Contemporary design options</li>
+                        <li>Excellent thermal performance</li>
+                        <li>Cost-effective solution</li>
+                    </ul>
+                    <div class="product-buttons">
+                        <a href="quote.html" class="btn-primary">Get Quote</a>
+                        <a href="contact.html" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corrugated Wall System -->
+            <div class="product-card">
+                <div class="product-image">📏</div>
+                <div class="product-content">
+                    <h3>Corrugated Wall System</h3>
+                    <p>Classic ribbed metal panels that offer strength and character. Popular choice for industrial and modern architectural applications.</p>
+                    <ul class="product-features">
+                        <li>High structural strength</li>
+                        <li>Efficient water drainage</li>
+                        <li>Industrial aesthetic appeal</li>
+                        <li>Budget-friendly option</li>
+                    </ul>
+                    <div class="product-buttons">
+                        <a href="quote.html" class="btn-primary">Get Quote</a>
+                        <a href="contact.html" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- High-Pressure Laminate -->
+            <div class="product-card">
+                <div class="product-image">🎨</div>
+                <div class="product-content">
+                    <h3>High-Pressure Laminate (HPL)</h3>
+                    <p>Decorative panels with exceptional durability and design flexibility. Available in countless colors, patterns, and textures.</p>
+                    <ul class="product-features">
+                        <li>Endless design possibilities</li>
+                        <li>UV and weather resistant</li>
+                        <li>Easy to clean and maintain</li>
+                        <li>Sustainable material option</li>
+                    </ul>
+                    <div class="product-buttons">
+                        <a href="quote.html" class="btn-primary">Get Quote</a>
+                        <a href="contact.html" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Materials & Finishes Section -->
+        <div class="materials-section">
+            <h2>Premium Materials & Finishes</h2>
+            <div class="materials-grid">
+                <div class="material-item">
+                    <div class="material-icon">🎨</div>
+                    <h4>Custom Colors</h4>
+                    <p>Extensive color palette to match your design vision</p>
+                </div>
+                <div class="material-item">
+                    <div class="material-icon">✨</div>
+                    <h4>Premium Finishes</h4>
+                    <p>Matte, gloss, metallic, and textured options</p>
+                </div>
+                <div class="material-item">
+                    <div class="material-icon">🛡️</div>
+                    <h4>Protective Coatings</h4>
+                    <p>Advanced coatings for enhanced durability</p>
+                </div>
+                <div class="material-item">
+                    <div class="material-icon">📐</div>
+                    <h4>Gauge Options</h4>
+                    <p>Various thicknesses for different applications</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications Section -->
+        <div class="applications-section">
+            <h2>Applications</h2>
+            <p>Our products are suitable for a wide range of building types and projects</p>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="application-icon">🏠</div>
+                    <h4>Residential</h4>
+                    <p>Custom homes, townhouses, and multi-family</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🏢</div>
+                    <h4>Commercial</h4>
+                    <p>Office buildings, retail spaces, restaurants</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🏭</div>
+                    <h4>Industrial</h4>
+                    <p>Warehouses, manufacturing facilities</p>
+                </div>
+                <div class="application-card">
+                    <div class="application-icon">🏫</div>
+                    <h4>Institutional</h4>
+                    <p>Schools, hospitals, government buildings</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Choose Your Materials?</h2>
+            <p>Contact our team today to discuss your project requirements and get expert product recommendations.</p>
+            <div class="cta-buttons">
+                <a href="quote.html" class="btn-cta">Request a Quote</a>
+                <a href="tel:+14167415140" class="btn-cta">Call (416) 741-5140</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h3>BlueSky Siding & <span>Cladding Inc.</span></h3>
+                <p>Leading provider of premium metal siding and cladding solutions. We combine quality materials with expert craftsmanship to deliver outstanding results.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="services.html">Metal Cladding</a></li>
+                    <li><a href="services.html">Aluminum Siding</a></li>
+                    <li><a href="services.html">Custom Fabrication</a></li>
+                    <li><a href="services.html">Installation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+14167415140">(416) 741-5140</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#4a23242c250a28263f2f3921336739232e23242d64292527"><span class="__cf_email__" data-cfemail="b4dddad2dbf4d6d8c1d1c7dfcd99c7ddd0dddad39ad7dbd9">[email&#160;protected]</span></a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer
