@@ -41,23 +41,35 @@
         }
 
         .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 0.3rem 1rem 0.3rem 0;
         }
 
         .logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+            padding-left: 15px;
         }
 
-        .logo span {
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .logo-text span {
             color: var(--secondary);
         }
 
@@ -66,6 +78,7 @@
             list-style: none;
             gap: 2rem;
             align-items: center;
+            padding-right: 2rem;
         }
 
         .nav-links a {
@@ -88,7 +101,7 @@
         }
 
         .page-header {
-            margin-top: 80px;
+            margin-top: 95px;
             padding: 4rem 2rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             color: white;
@@ -652,14 +665,26 @@
             margin-bottom: 3rem;
         }
 
-        .footer h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 1rem;
         }
 
-        .footer h3 span {
+        .footer-logo img {
+            height: 65px;
+            width: auto;
+        }
+
+        .footer-logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .footer-logo-text span {
             color: var(--secondary);
         }
 
@@ -719,13 +744,18 @@
             .diagram-corner {
                 display: none;
             }
+            .logo-text { font-size: 1rem; }
+            .logo img { height: 50px; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">BlueSky <span>Siding</span></a>
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="BlueSky Siding & Cladding Inc.">
+                <span class="logo-text">Blue Sky Siding <span>& Cladding Inc.</span></span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -822,7 +852,10 @@
     <footer class="footer">
         <div class="footer-container">
             <div>
-                <h3>BlueSky Siding & <span>Cladding Inc.</span></h3>
+                <div class="footer-logo">
+                    <img src="images/logo.jpg" alt="BlueSky Siding & Cladding Inc.">
+                    <span class="footer-logo-text">Blue Sky Siding <span>& Cladding Inc.</span></span>
+                </div>
                 <p>Leading provider of premium metal siding and cladding solutions. We combine quality materials with expert craftsmanship to deliver outstanding results.</p>
             </div>
             <div>

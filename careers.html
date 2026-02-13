@@ -42,23 +42,35 @@
         }
 
         .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 0.3rem 1rem 0.3rem 0;
         }
 
         .logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+            padding-left: 15px;
         }
 
-        .logo span {
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .logo-text span {
             color: var(--secondary);
         }
 
@@ -67,6 +79,7 @@
             list-style: none;
             gap: 2rem;
             align-items: center;
+            padding-right: 2rem;
         }
 
         .nav-links a {
@@ -90,7 +103,7 @@
         }
 
         .page-header {
-            margin-top: 80px;
+            margin-top: 95px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             padding: 5rem 2rem 3rem;
             text-align: center;
@@ -411,14 +424,26 @@
             margin-bottom: 3rem;
         }
 
-        .footer h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 1rem;
         }
 
-        .footer h3 span {
+        .footer-logo img {
+            height: 65px;
+            width: auto;
+        }
+
+        .footer-logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .footer-logo-text span {
             color: var(--secondary);
         }
 
@@ -476,13 +501,18 @@
             .footer-container {
                 grid-template-columns: 1fr;
             }
+            .logo-text { font-size: 1rem; }
+            .logo img { height: 50px; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">BlueSky <span>Siding</span></a>
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="BlueSky Siding & Cladding Inc.">
+                <span class="logo-text">Blue Sky Siding <span>& Cladding Inc.</span></span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -610,7 +640,10 @@
     <footer class="footer">
         <div class="footer-container">
             <div>
-                <h3>BlueSky <span>Siding</span></h3>
+                <div class="footer-logo">
+                    <img src="images/logo.jpg" alt="BlueSky Siding & Cladding Inc.">
+                    <span class="footer-logo-text">Blue Sky Siding <span>& Cladding Inc.</span></span>
+                </div>
                 <p>Leading provider of premium metal siding and cladding solutions. We combine quality materials with expert craftsmanship to deliver outstanding results.</p>
             </div>
             <div>
@@ -635,7 +668,7 @@
                 <h4>Contact</h4>
                 <ul class="footer-links">
                     <li><a href="tel:+14167415140">(416) 741-5140</a></li>
-                    <li><a href="/cdn-cgi/l/email-protection#8ae3e4ece5cae8e6ffeff9e1f3a7f9e3eee3e4eda4e9e5e7"><span class="__cf_email__" data-cfemail="670e09010827050b1202140c1e4a140e030e09004904080a">[email&#160;protected]</span></a></li>
+                    <li><a href="mailto:info@bluesky-siding.com">info@bluesky-siding.com</a></li>
                     <li><a href="careers.html">Careers</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
@@ -645,6 +678,5 @@
             <p>&copy; 2022 BlueSky Siding & Cladding Inc. All rights reserved.</p>
         </div>
     </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        document.getElementById('applicationForm').addEvent
+</body>
+</html>
