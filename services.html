@@ -18,19 +18,17 @@
             --white: #FFFFFF;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Work Sans', sans-serif;
             color: var(--dark);
             line-height: 1.6;
             background: var(--light);
+            overflow-x: hidden;
         }
 
+        /* ── NAVBAR ── */
         .navbar {
             position: fixed;
             top: 0;
@@ -56,10 +54,7 @@
             padding-left: 15px;
         }
 
-        .logo img {
-            height: 80px;
-            width: auto;
-        }
+        .logo img { height: 80px; width: auto; }
 
         .logo-text {
             font-family: 'Outfit', sans-serif;
@@ -69,9 +64,7 @@
             white-space: nowrap;
         }
 
-        .logo-text span {
-            color: var(--secondary);
-        }
+        .logo-text span { color: var(--secondary); }
 
         .nav-links {
             display: flex;
@@ -89,9 +82,7 @@
         }
 
         .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--secondary);
-        }
+        .nav-links a.active { color: var(--secondary); }
 
         .cta-button {
             background: var(--secondary);
@@ -101,12 +92,82 @@
             font-weight: 600;
         }
 
+        /* ── PAGE HEADER WITH ANIMATED BG ── */
         .page-header {
             margin-top: 95px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             padding: 5rem 2rem 3rem;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floating orbs in header */
+        .header-orb {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.12;
+            filter: blur(40px);
+        }
+
+        .header-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            top: -100px;
+            right: -80px;
+            animation: floatOrb1 8s ease-in-out infinite;
+        }
+
+        .header-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            bottom: -80px;
+            left: -60px;
+            animation: floatOrb2 10s ease-in-out infinite;
+        }
+
+        .header-orb-3 {
+            width: 200px;
+            height: 200px;
+            background: #5BB5F5;
+            top: 20%;
+            left: 30%;
+            animation: floatOrb3 12s ease-in-out infinite;
+        }
+
+        @keyframes floatOrb1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-40px, 30px) scale(1.15); }
+        }
+
+        @keyframes floatOrb2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -40px) scale(1.1); }
+        }
+
+        @keyframes floatOrb3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(0.9); }
+            66% { transform: translate(-20px, 25px) scale(1.1); }
+        }
+
+        /* Animated grid lines in header */
+        .header-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(62,146,204,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(62,146,204,0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridShift 20s linear infinite;
+        }
+
+        @keyframes gridShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
         }
 
         .page-header h1 {
@@ -114,22 +175,101 @@
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 0.8s ease forwards;
         }
 
         .page-header p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s 0.3s ease forwards;
         }
 
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 0.9; transform: translateY(0); }
+        }
+
+        /* ── FLOATING SHAPES BACKGROUND ── */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.04;
+            background: var(--secondary);
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            top: 20%;
+            right: -100px;
+            animation: shapeFloat1 18s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 350px;
+            height: 350px;
+            top: 50%;
+            left: -80px;
+            background: var(--accent);
+            animation: shapeFloat2 22s ease-in-out infinite;
+        }
+
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            right: 20%;
+            background: var(--primary);
+            animation: shapeFloat3 15s ease-in-out infinite;
+        }
+
+        @keyframes shapeFloat1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-60px, 40px) rotate(180deg); }
+        }
+
+        @keyframes shapeFloat2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(80px, -50px) rotate(-180deg); }
+        }
+
+        @keyframes shapeFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-40px, -60px) scale(1.2); }
+        }
+
+        /* ── SERVICES SECTION ── */
         .services-section {
             padding: 5rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .services-intro {
             text-align: center;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto 4rem;
         }
 
@@ -138,144 +278,336 @@
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .services-intro p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--gray);
         }
 
+        /* ── SCROLL REVEAL CARDS ── */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
             margin-bottom: 5rem;
         }
 
         .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            position: relative;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2rem 1.8rem 1.8rem;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(10, 36, 99, 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            /* Scroll reveal — start hidden */
+            opacity: 0;
+            transform: translateY(50px) scale(0.96);
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        box-shadow 0.4s ease,
+                        border-color 0.4s ease;
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Animated gradient border on hover */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent), var(--secondary));
+            background-size: 200% 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: shimmerBorder 3s linear infinite;
+        }
+
+        @keyframes shimmerBorder {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Glow effect on hover */
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(62,146,204,0.08) 0%, transparent 60%);
+            pointer-events: none;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            border-color: var(--secondary);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow:
+                0 24px 48px rgba(10, 36, 99, 0.12),
+                0 8px 16px rgba(62, 146, 204, 0.08),
+                0 0 0 1px rgba(62, 146, 204, 0.1);
         }
 
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            border-radius: 20px;
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+            position: relative;
+            z-index: 1;
         }
+
+        .service-card:hover .service-icon-wrap {
+            transform: scale(1.15) rotate(-5deg);
+            box-shadow: 0 8px 20px rgba(62, 146, 204, 0.2);
+        }
+
+        /* Unique soft tints */
+        .service-card:nth-child(1) .service-icon-wrap { background: #E3F2FD; }
+        .service-card:nth-child(2) .service-icon-wrap { background: #E8F5E9; }
+        .service-card:nth-child(3) .service-icon-wrap { background: #FFF3E0; }
+        .service-card:nth-child(4) .service-icon-wrap { background: #F3E5F5; }
+        .service-card:nth-child(5) .service-icon-wrap { background: #E0F7FA; }
+        .service-card:nth-child(6) .service-icon-wrap { background: #FBE9E7; }
+        .service-card:nth-child(7) .service-icon-wrap { background: #FFF8E1; }
+        .service-card:nth-child(8) .service-icon-wrap { background: #E8EAF6; }
+        .service-card:nth-child(9) .service-icon-wrap { background: #F1F8E9; }
+        .service-card:nth-child(10) .service-icon-wrap { background: #E1F5FE; }
 
         .service-card h3 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+            position: relative;
+            z-index: 1;
         }
 
-        .service-card p {
+        .service-card .service-desc {
             color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+            position: relative;
+            z-index: 1;
         }
 
-        .service-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            color: var(--dark);
+        .service-tags {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 1.4rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .service-features li::before {
-            content: '✓';
-            color: var(--secondary);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .service-btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 0.9rem 2rem;
+        .service-tags span {
+            background: var(--light);
+            color: var(--primary);
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.3rem 0.75rem;
             border-radius: 50px;
+            border: 1px solid rgba(10, 36, 99, 0.08);
+            white-space: nowrap;
+            transition: all 0.3s ease, transform 0.3s ease;
+        }
+
+        .service-card:hover .service-tags span {
+            background: rgba(62, 146, 204, 0.1);
+            border-color: rgba(62, 146, 204, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Stagger tag animations */
+        .service-card:hover .service-tags span:nth-child(1) { transition-delay: 0s; }
+        .service-card:hover .service-tags span:nth-child(2) { transition-delay: 0.05s; }
+        .service-card:hover .service-tags span:nth-child(3) { transition-delay: 0.1s; }
+        .service-card:hover .service-tags span:nth-child(4) { transition-delay: 0.15s; }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--secondary);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
-        .service-btn:hover {
+        .service-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
             background: var(--accent);
-            transform: translateY(-3px);
+            transition: width 0.3s ease;
         }
 
+        .service-card:hover .service-link::after {
+            width: calc(100% - 24px);
+        }
+
+        .service-link .arrow {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .service-card:hover .service-link .arrow {
+            transform: translateX(6px);
+        }
+
+        .service-link:hover { color: var(--accent); }
+
+        /* ── CTA SECTION ── */
         .cta-section {
             background: linear-gradient(135deg, var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            animation: gradientMove 6s ease-in-out infinite;
             padding: 4rem 3rem;
-            border-radius: 20px;
+            border-radius: 24px;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+
+            /* Scroll reveal */
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .cta-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Animated particles in CTA */
+        .cta-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+
+        .cta-particle:nth-child(1) { top: 20%; left: 10%; animation: particleFloat 6s ease-in-out infinite; }
+        .cta-particle:nth-child(2) { top: 60%; left: 25%; animation: particleFloat 8s 1s ease-in-out infinite; width: 8px; height: 8px; }
+        .cta-particle:nth-child(3) { top: 30%; right: 15%; animation: particleFloat 7s 0.5s ease-in-out infinite; width: 4px; height: 4px; }
+        .cta-particle:nth-child(4) { bottom: 25%; right: 30%; animation: particleFloat 9s 2s ease-in-out infinite; width: 5px; height: 5px; }
+        .cta-particle:nth-child(5) { top: 50%; left: 50%; animation: particleFloat 10s 1.5s ease-in-out infinite; width: 7px; height: 7px; }
+        .cta-particle:nth-child(6) { top: 15%; right: 40%; animation: particleFloat 7s 3s ease-in-out infinite; }
+        .cta-particle:nth-child(7) { bottom: 35%; left: 40%; animation: particleFloat 8s 0.8s ease-in-out infinite; width: 9px; height: 9px; }
+        .cta-particle:nth-child(8) { top: 70%; right: 10%; animation: particleFloat 6s 2.5s ease-in-out infinite; width: 5px; height: 5px; }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            25% { transform: translate(15px, -20px) scale(1.3); opacity: 0.6; }
+            50% { transform: translate(-10px, -35px) scale(0.8); opacity: 0.2; }
+            75% { transform: translate(20px, -15px) scale(1.1); opacity: 0.5; }
         }
 
         .cta-section h2 {
             font-family: 'Outfit', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
             opacity: 0.95;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-cta {
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2.2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            font-size: 1.05rem;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             background: white;
             color: var(--secondary);
             border: 2px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .btn-cta:hover::before {
+            transform: translateX(100%);
         }
 
         .btn-cta:hover {
             background: transparent;
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
+        /* ── FOOTER ── */
         .footer {
             background: var(--dark);
             color: white;
@@ -299,10 +631,7 @@
             margin-bottom: 1rem;
         }
 
-        .footer-logo img {
-            height: 65px;
-            width: auto;
-        }
+        .footer-logo img { height: 65px; width: auto; }
 
         .footer-logo-text {
             font-family: 'Outfit', sans-serif;
@@ -311,14 +640,8 @@
             color: white;
         }
 
-        .footer-logo-text span {
-            color: var(--secondary);
-        }
-
-        .footer p {
-            opacity: 0.8;
-            line-height: 1.7;
-        }
+        .footer-logo-text span { color: var(--secondary); }
+        .footer p { opacity: 0.8; line-height: 1.7; }
 
         .footer h4 {
             font-family: 'Outfit', sans-serif;
@@ -326,21 +649,18 @@
             margin-bottom: 1.5rem;
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
 
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
+            transition: color 0.3s ease, padding-left 0.3s ease;
         }
 
         .footer-links a:hover {
             color: var(--secondary);
+            padding-left: 5px;
         }
 
         .footer-bottom {
@@ -350,28 +670,59 @@
             opacity: 0.7;
         }
 
+        /* ── SCROLL REVEAL FOR INTRO ── */
+        .services-intro {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .services-intro.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .cta-buttons {
-                flex-direction: column;
-            }
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; }
+            .page-header h1 { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; }
+            .footer-container { grid-template-columns: 1fr; }
             .logo-text { font-size: 1rem; }
             .logo img { height: 50px; }
+            .cta-section { padding: 3rem 1.5rem; }
+            .cta-section h2 { font-size: 1.8rem; }
+            .floating-shapes { display: none; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1100px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .service-card { opacity: 1; transform: none; }
+            .services-intro { opacity: 1; transform: none; }
+            .cta-section { opacity: 1; transform: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Floating background shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -391,6 +742,10 @@
     </nav>
 
     <div class="page-header">
+        <div class="header-grid"></div>
+        <div class="header-orb header-orb-1"></div>
+        <div class="header-orb header-orb-2"></div>
+        <div class="header-orb header-orb-3"></div>
         <div>
             <h1>Our Professional Services</h1>
             <p>Complete siding and cladding solutions for residential and commercial projects</p>
@@ -400,131 +755,146 @@
     <section class="services-section">
         <div class="services-intro">
             <h2>What We Offer</h2>
-            <p>From installation to maintenance, we provide comprehensive exterior solutions for all your siding and cladding needs throughout Ontario.</p>
+            <p>Comprehensive exterior solutions for all your siding and cladding needs throughout Ontario.</p>
         </div>
 
         <div class="services-grid">
+
             <div class="service-card">
-                <div class="service-icon">🏗️</div>
+                <div class="service-icon-wrap">🏗️</div>
                 <h3>Siding Installation & Replacement</h3>
-                <p>Expert installation and replacement services for all types of siding materials. We ensure proper installation techniques for long-lasting results.</p>
-                <ul class="service-features">
-                    <li>Professional installation</li>
-                    <li>Complete siding replacement</li>
-                    <li>Quality workmanship guaranteed</li>
-                    <li>Timely project completion</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Expert installation and full replacement for all siding materials with guaranteed workmanship.</p>
+                <div class="service-tags">
+                    <span>New Installation</span>
+                    <span>Full Replacement</span>
+                    <span>All Materials</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon">🏢</div>
+                <div class="service-icon-wrap">🏢</div>
                 <h3>Exterior Cladding Systems</h3>
-                <p>Modern cladding systems designed to enhance your building's aesthetics and weather protection with premium materials.</p>
-                <ul class="service-features">
-                    <li>Metal cladding panels</li>
-                    <li>Aluminum composite systems</li>
-                    <li>Weather-resistant solutions</li>
-                    <li>Custom design options</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Modern cladding systems that enhance aesthetics and weather protection with premium materials.</p>
+                <div class="service-tags">
+                    <span>Metal Panels</span>
+                    <span>Aluminum Composite</span>
+                    <span>Custom Design</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon">⚙️</div>
+                <div class="service-icon-wrap">⚙️</div>
                 <h3>Vinyl, Fiber Cement & Metal Siding</h3>
-                <p>We specialize in installing various siding materials to match your specific needs, budget, and aesthetic preferences.</p>
-                <ul class="service-features">
-                    <li>Vinyl siding installation</li>
-                    <li>Fiber cement siding</li>
-                    <li>Metal siding systems</li>
-                    <li>Material consultation</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Specialized installation of various siding materials matched to your needs and budget.</p>
+                <div class="service-tags">
+                    <span>Vinyl</span>
+                    <span>Fiber Cement</span>
+                    <span>Metal</span>
+                    <span>Consultation</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon">🏘️</div>
+                <div class="service-icon-wrap">🏘️</div>
                 <h3>Residential & Commercial Projects</h3>
-                <p>Serving both residential homeowners and commercial property managers with tailored solutions for projects of any size.</p>
-                <ul class="service-features">
-                    <li>Custom homes & townhouses</li>
-                    <li>Multi-residential buildings</li>
-                    <li>Commercial properties</li>
-                    <li>Industrial facilities</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Tailored solutions for homeowners and commercial property managers — projects of any scale.</p>
+                <div class="service-tags">
+                    <span>Custom Homes</span>
+                    <span>Multi-Residential</span>
+                    <span>Commercial</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon">🔧</div>
+                <div class="service-icon-wrap">🔧</div>
                 <h3>Siding Repairs & Maintenance</h3>
-                <p>Professional repair and maintenance services to keep your siding in excellent condition and extend its lifespan.</p>
-                <ul class="service-features">
-                    <li>Damage repair services</li>
-                    <li>Preventative maintenance</li>
-                    <li>Weather damage restoration</li>
-                    <li>Regular inspections</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Professional repair and preventative maintenance to extend the lifespan of your siding.</p>
+                <div class="service-tags">
+                    <span>Damage Repair</span>
+                    <span>Maintenance</span>
+                    <span>Inspections</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon">🛡️</div>
+                <div class="service-icon-wrap">🛡️</div>
                 <h3>Coping & Flashing Systems</h3>
-                <p>Essential waterproofing and protection systems to ensure your building envelope remains watertight and durable.</p>
-                <ul class="service-features">
-                    <li>Custom coping installations</li>
-                    <li>Flashing system design</li>
-                    <li>Water damage prevention</li>
-                    <li>Professional sealing</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Essential waterproofing systems to keep your building envelope watertight and durable.</p>
+                <div class="service-tags">
+                    <span>Coping</span>
+                    <span>Flashing</span>
+                    <span>Sealing</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon">✨</div>
+                <div class="service-icon-wrap">✨</div>
                 <h3>Custom Aluminum & Copper Work</h3>
-                <p>Specialized custom fabrication and installation of aluminum and copper architectural elements for distinctive projects.</p>
-                <ul class="service-features">
-                    <li>Custom aluminum fabrication</li>
-                    <li>Copper architectural work</li>
-                    <li>Decorative metal elements</li>
-                    <li>Precision craftsmanship</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Custom fabrication and installation of aluminum and copper architectural elements.</p>
+                <div class="service-tags">
+                    <span>Aluminum</span>
+                    <span>Copper</span>
+                    <span>Decorative</span>
+                    <span>Custom</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon">💧</div>
+                <div class="service-icon-wrap">💧</div>
                 <h3>Aluminum & Copper Flashing</h3>
-                <p>Premium aluminum and copper flashing installations to protect your building from water infiltration and weather damage.</p>
-                <ul class="service-features">
-                    <li>Aluminum flashing systems</li>
-                    <li>Copper flashing installation</li>
-                    <li>Custom-fit solutions</li>
-                    <li>Long-lasting protection</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Premium flashing installations to protect against water infiltration and weather damage.</p>
+                <div class="service-tags">
+                    <span>Aluminum</span>
+                    <span>Copper</span>
+                    <span>Custom-Fit</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
 
             <div class="service-card">
-                <div class="service-icon">🎨</div>
+                <div class="service-icon-wrap">🎨</div>
                 <h3>Metal Siding Coating</h3>
-                <p>Professional coating services to protect and beautify your metal siding with durable, weather-resistant finishes.</p>
-                <ul class="service-features">
-                    <li>Protective coating application</li>
-                    <li>Color matching & custom finishes</li>
-                    <li>UV & weather protection</li>
-                    <li>Extended siding lifespan</li>
-                </ul>
-                <a href="quote.html" class="service-btn">Get a Quote</a>
+                <p class="service-desc">Durable, weather-resistant coating finishes to protect and beautify your metal siding.</p>
+                <div class="service-tags">
+                    <span>Protective Coating</span>
+                    <span>Color Matching</span>
+                    <span>UV Protection</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
+
+            <div class="service-card">
+                <div class="service-icon-wrap">📐</div>
+                <h3>Architectural Drawings</h3>
+                <p class="service-desc">Detailed technical drawings and documentation for accurate project planning and execution.</p>
+                <div class="service-tags">
+                    <span>Design Plans</span>
+                    <span>Shop Drawings</span>
+                    <span>As-Built Packages</span>
+                </div>
+                <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
+            </div>
+
         </div>
 
         <div class="cta-section">
+            <div class="cta-particle"></div>
+            <div class="cta-particle"></div>
+            <div class="cta-particle"></div>
+            <div class="cta-particle"></div>
+            <div class="cta-particle"></div>
+            <div class="cta-particle"></div>
+            <div class="cta-particle"></div>
+            <div class="cta-particle"></div>
             <h2>Ready to Start Your Project?</h2>
-            <p>Contact us today to discuss your siding and cladding needs. Our team will help you select the perfect service for your project.</p>
+            <p>Contact us today to discuss your siding and cladding needs.</p>
             <div class="cta-buttons">
                 <a href="quote.html" class="btn-cta">Request a Quote</a>
                 <a href="tel:+14167415140" class="btn-cta">Call (416) 741-5140</a>
@@ -573,5 +943,69 @@
             <p>&copy; 2022 BlueSky Siding & Cladding Inc. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // ── Scroll Reveal with staggered delays ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger cards based on their position in the grid
+                    const card = entry.target;
+                    const cards = [...document.querySelectorAll('.service-card')];
+                    const cardIndex = cards.indexOf(card);
+                    const delay = cardIndex * 80; // 80ms stagger
+
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, delay);
+
+                    observer.unobserve(card);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe all service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe intro section
+        const introObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    introObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.services-intro, .cta-section').forEach(el => {
+            introObserver.observe(el);
+        });
+
+        // ── Mouse-follow glow effect on cards ──
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', x + '%');
+                card.style.setProperty('--mouse-y', y + '%');
+            });
+        });
+
+        // ── Parallax floating shapes on scroll ──
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, i) => {
+                const speed = 0.03 + (i * 0.015);
+                shape.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
