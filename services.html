@@ -3,393 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - BlueSky Siding & Cladding Inc.</title>
+    <title>Services - BlueSky Siding &amp; Cladding Inc.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0A2463;
-            --secondary: #3E92CC;
-            --accent: #1E88E5;
-            --dark: #0D1B2A;
-            --light: #F8F9FA;
-            --gray: #6C757D;
-            --white: #FFFFFF;
+            --primary: #0A2463; --secondary: #3E92CC; --accent: #1E88E5;
+            --dark: #0D1B2A; --light: #F8F9FA; --gray: #6C757D; --white: #FFFFFF;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Work Sans', sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-            background: var(--light);
-            overflow-x: hidden;
-        }
-
-        /* ── NAVBAR ── */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .nav-container {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.3rem 1rem 0.3rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            padding-left: 15px;
-        }
-
+        body { font-family: 'Work Sans', sans-serif; color: var(--dark); line-height: 1.6; background: var(--light); overflow-x: hidden; }
+        .navbar { position: fixed; top: 0; width: 100%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-container { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0.3rem 1rem 0.3rem 0; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; padding-left: 15px; }
         .logo img { height: 80px; width: auto; }
-
-        .logo-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            white-space: nowrap;
-        }
-
+        .logo-text { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); white-space: nowrap; }
         .logo-text span { color: var(--secondary); }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-            padding-right: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active { color: var(--secondary); }
-
-        .cta-button {
-            background: var(--secondary);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-        }
-
-        /* ── PAGE HEADER WITH ANIMATED BG ── */
-        .page-header {
-            margin-top: 95px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            padding: 5rem 2rem 3rem;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Floating orbs in header */
-        .header-orb {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.12;
-            filter: blur(40px);
-        }
-
-        .header-orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--secondary);
-            top: -100px;
-            right: -80px;
-            animation: floatOrb1 8s ease-in-out infinite;
-        }
-
-        .header-orb-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            bottom: -80px;
-            left: -60px;
-            animation: floatOrb2 10s ease-in-out infinite;
-        }
-
-        .header-orb-3 {
-            width: 200px;
-            height: 200px;
-            background: #5BB5F5;
-            top: 20%;
-            left: 30%;
-            animation: floatOrb3 12s ease-in-out infinite;
-        }
-
-        @keyframes floatOrb1 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-40px, 30px) scale(1.15); }
-        }
-
-        @keyframes floatOrb2 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, -40px) scale(1.1); }
-        }
-
-        @keyframes floatOrb3 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -20px) scale(0.9); }
-            66% { transform: translate(-20px, 25px) scale(1.1); }
-        }
-
-        /* Animated grid lines in header */
-        .header-grid {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(62,146,204,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(62,146,204,0.06) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridShift 20s linear infinite;
-        }
-
-        @keyframes gridShift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(60px, 60px); }
-        }
-
-        .page-header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-            animation: fadeInDown 0.8s ease forwards;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0;
-            position: relative;
-            z-index: 2;
-            animation: fadeInUp 0.8s 0.3s ease forwards;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 0.9; transform: translateY(0); }
-        }
-
-        /* ── FLOATING SHAPES BACKGROUND ── */
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.04;
-            background: var(--secondary);
-        }
-
-        .shape-1 {
-            width: 500px;
-            height: 500px;
-            top: 20%;
-            right: -100px;
-            animation: shapeFloat1 18s ease-in-out infinite;
-        }
-
-        .shape-2 {
-            width: 350px;
-            height: 350px;
-            top: 50%;
-            left: -80px;
-            background: var(--accent);
-            animation: shapeFloat2 22s ease-in-out infinite;
-        }
-
-        .shape-3 {
-            width: 250px;
-            height: 250px;
-            bottom: 10%;
-            right: 20%;
-            background: var(--primary);
-            animation: shapeFloat3 15s ease-in-out infinite;
-        }
-
-        @keyframes shapeFloat1 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-60px, 40px) rotate(180deg); }
-        }
-
-        @keyframes shapeFloat2 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(80px, -50px) rotate(-180deg); }
-        }
-
-        @keyframes shapeFloat3 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-40px, -60px) scale(1.2); }
-        }
-
-        /* ── SERVICES SECTION ── */
-        .services-section {
-            padding: 5rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .services-intro {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-        }
-
-        .services-intro h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .services-intro p {
-            font-size: 1.05rem;
-            color: var(--gray);
-        }
-
-        /* ── SCROLL REVEAL CARDS ── */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.8rem;
-            margin-bottom: 5rem;
-        }
-
-        .service-card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 2rem 1.8rem 1.8rem;
-            overflow: hidden;
-            cursor: pointer;
-            border: 1px solid rgba(10, 36, 99, 0.06);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-
-            /* Scroll reveal — start hidden */
-            opacity: 0;
-            transform: translateY(50px) scale(0.96);
-            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        box-shadow 0.4s ease,
-                        border-color 0.4s ease;
-        }
-
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        /* Animated gradient border on hover */
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent), var(--secondary));
-            background-size: 200% 100%;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            animation: shimmerBorder 3s linear infinite;
-        }
-
-        @keyframes shimmerBorder {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* Glow effect on hover */
-        .service-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(62,146,204,0.08) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow:
-                0 24px 48px rgba(10, 36, 99, 0.12),
-                0 8px 16px rgba(62, 146, 204, 0.08),
-                0 0 0 1px rgba(62, 146, 204, 0.1);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-card:hover::after {
-            opacity: 1;
-        }
-
-        .service-icon-wrap {
-            width: 64px;
-            height: 64px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 1.2rem;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-card:hover .service-icon-wrap {
-            transform: scale(1.15) rotate(-5deg);
-            box-shadow: 0 8px 20px rgba(62, 146, 204, 0.2);
-        }
-
-        /* Unique soft tints */
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; padding-right: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
+        .cta-button { background: var(--secondary); color: white !important; padding: 0.7rem 1.5rem; border-radius: 50px; font-weight: 600; }
+        .page-header { margin-top: 95px; background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%); padding: 5rem 2rem 3rem; text-align: center; color: white; position: relative; overflow: hidden; }
+        .header-orb { position: absolute; border-radius: 50%; opacity: 0.12; filter: blur(40px); }
+        .header-orb-1 { width: 400px; height: 400px; background: var(--secondary); top: -100px; right: -80px; animation: floatOrb1 8s ease-in-out infinite; }
+        .header-orb-2 { width: 300px; height: 300px; background: var(--accent); bottom: -80px; left: -60px; animation: floatOrb2 10s ease-in-out infinite; }
+        .header-orb-3 { width: 200px; height: 200px; background: #5BB5F5; top: 20%; left: 30%; animation: floatOrb3 12s ease-in-out infinite; }
+        @keyframes floatOrb1 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,30px) scale(1.15); } }
+        @keyframes floatOrb2 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px,-40px) scale(1.1); } }
+        @keyframes floatOrb3 { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(30px,-20px) scale(0.9); } 66% { transform: translate(-20px,25px) scale(1.1); } }
+        .header-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(62,146,204,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(62,146,204,0.06) 1px, transparent 1px); background-size: 60px 60px; animation: gridShift 20s linear infinite; }
+        @keyframes gridShift { 0% { transform: translate(0,0); } 100% { transform: translate(60px,60px); } }
+        .page-header h1 { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 800; margin-bottom: 1rem; position: relative; z-index: 2; animation: fadeInDown 0.8s ease forwards; }
+        .page-header p { font-size: 1.2rem; opacity: 0; position: relative; z-index: 2; animation: fadeInUp 0.8s 0.3s ease forwards; }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 0.9; transform: translateY(0); } }
+        .floating-shapes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .shape { position: absolute; border-radius: 50%; opacity: 0.04; background: var(--secondary); }
+        .shape-1 { width: 500px; height: 500px; top: 20%; right: -100px; animation: shapeFloat1 18s ease-in-out infinite; }
+        .shape-2 { width: 350px; height: 350px; top: 50%; left: -80px; background: var(--accent); animation: shapeFloat2 22s ease-in-out infinite; }
+        .shape-3 { width: 250px; height: 250px; bottom: 10%; right: 20%; background: var(--primary); animation: shapeFloat3 15s ease-in-out infinite; }
+        @keyframes shapeFloat1 { 0%, 100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(-60px,40px) rotate(180deg); } }
+        @keyframes shapeFloat2 { 0%, 100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(80px,-50px) rotate(-180deg); } }
+        @keyframes shapeFloat3 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,-60px) scale(1.2); } }
+        .services-section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+        .services-intro { text-align: center; max-width: 700px; margin: 0 auto 4rem; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .services-intro.visible { opacity: 1; transform: translateY(0); }
+        .services-intro h2 { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; }
+        .services-intro p { font-size: 1.05rem; color: var(--gray); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem; margin-bottom: 5rem; }
+        .service-card { position: relative; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 24px; padding: 2rem 1.8rem 1.8rem; overflow: hidden; cursor: pointer; border: 1px solid rgba(10,36,99,0.06); display: flex; flex-direction: column; align-items: flex-start; opacity: 0; transform: translateY(50px) scale(0.96); transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s ease, border-color 0.4s ease; }
+        .service-card.visible { opacity: 1; transform: translateY(0) scale(1); }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--secondary), var(--accent), var(--secondary)); background-size: 200% 100%; opacity: 0; transition: opacity 0.4s ease; animation: shimmerBorder 3s linear infinite; }
+        @keyframes shimmerBorder { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .service-card::after { content: ''; position: absolute; inset: 0; border-radius: 24px; opacity: 0; transition: opacity 0.5s ease; background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(62,146,204,0.08) 0%, transparent 60%); pointer-events: none; }
+        .service-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 24px 48px rgba(10,36,99,0.12), 0 8px 16px rgba(62,146,204,0.08), 0 0 0 1px rgba(62,146,204,0.1); }
+        .service-card:hover::before { opacity: 1; }
+        .service-card:hover::after { opacity: 1; }
+        .service-icon-wrap { width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.2rem; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease; position: relative; z-index: 1; }
+        .service-card:hover .service-icon-wrap { transform: scale(1.15) rotate(-5deg); box-shadow: 0 8px 20px rgba(62,146,204,0.2); }
         .service-card:nth-child(1) .service-icon-wrap { background: #E3F2FD; }
         .service-card:nth-child(2) .service-icon-wrap { background: #E8F5E9; }
         .service-card:nth-child(3) .service-icon-wrap { background: #FFF3E0; }
@@ -400,137 +72,25 @@
         .service-card:nth-child(8) .service-icon-wrap { background: #E8EAF6; }
         .service-card:nth-child(9) .service-icon-wrap { background: #F1F8E9; }
         .service-card:nth-child(10) .service-icon-wrap { background: #E1F5FE; }
-
-        .service-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.6rem;
-            line-height: 1.3;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-card .service-desc {
-            color: var(--gray);
-            font-size: 0.92rem;
-            line-height: 1.6;
-            margin-bottom: 1.2rem;
-            flex-grow: 1;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-            margin-bottom: 1.4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-tags span {
-            background: var(--light);
-            color: var(--primary);
-            font-size: 0.78rem;
-            font-weight: 500;
-            padding: 0.3rem 0.75rem;
-            border-radius: 50px;
-            border: 1px solid rgba(10, 36, 99, 0.08);
-            white-space: nowrap;
-            transition: all 0.3s ease, transform 0.3s ease;
-        }
-
-        .service-card:hover .service-tags span {
-            background: rgba(62, 146, 204, 0.1);
-            border-color: rgba(62, 146, 204, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Stagger tag animations */
+        .service-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.6rem; line-height: 1.3; position: relative; z-index: 1; }
+        .service-card .service-desc { color: var(--gray); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.2rem; flex-grow: 1; position: relative; z-index: 1; }
+        .service-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.4rem; position: relative; z-index: 1; }
+        .service-tags span { background: var(--light); color: var(--primary); font-size: 0.78rem; font-weight: 500; padding: 0.3rem 0.75rem; border-radius: 50px; border: 1px solid rgba(10,36,99,0.08); white-space: nowrap; transition: all 0.3s ease, transform 0.3s ease; }
+        .service-card:hover .service-tags span { background: rgba(62,146,204,0.1); border-color: rgba(62,146,204,0.2); transform: translateY(-2px); }
         .service-card:hover .service-tags span:nth-child(1) { transition-delay: 0s; }
         .service-card:hover .service-tags span:nth-child(2) { transition-delay: 0.05s; }
         .service-card:hover .service-tags span:nth-child(3) { transition-delay: 0.1s; }
         .service-card:hover .service-tags span:nth-child(4) { transition-delay: 0.15s; }
-
-        .service-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .service-card:hover .service-link::after {
-            width: calc(100% - 24px);
-        }
-
-        .service-link .arrow {
-            display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .service-card:hover .service-link .arrow {
-            transform: translateX(6px);
-        }
-
+        .service-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; position: relative; z-index: 1; }
+        .service-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+        .service-card:hover .service-link::after { width: calc(100% - 24px); }
+        .service-link .arrow { display: inline-block; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+        .service-card:hover .service-link .arrow { transform: translateX(6px); }
         .service-link:hover { color: var(--accent); }
-
-        /* ── CTA SECTION ── */
-        .cta-section {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            background-size: 200% 200%;
-            animation: gradientMove 6s ease-in-out infinite;
-            padding: 4rem 3rem;
-            border-radius: 24px;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-
-            /* Scroll reveal */
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .cta-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes gradientMove {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Animated particles in CTA */
-        .cta-particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-        }
-
+        .cta-section { background: linear-gradient(135deg, var(--secondary), var(--accent)); background-size: 200% 200%; animation: gradientMove 6s ease-in-out infinite; padding: 4rem 3rem; border-radius: 24px; text-align: center; color: white; position: relative; overflow: hidden; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .cta-section.visible { opacity: 1; transform: translateY(0); }
+        @keyframes gradientMove { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .cta-particle { position: absolute; width: 6px; height: 6px; background: rgba(255,255,255,0.3); border-radius: 50%; }
         .cta-particle:nth-child(1) { top: 20%; left: 10%; animation: particleFloat 6s ease-in-out infinite; }
         .cta-particle:nth-child(2) { top: 60%; left: 25%; animation: particleFloat 8s 1s ease-in-out infinite; width: 8px; height: 8px; }
         .cta-particle:nth-child(3) { top: 30%; right: 15%; animation: particleFloat 7s 0.5s ease-in-out infinite; width: 4px; height: 4px; }
@@ -539,150 +99,30 @@
         .cta-particle:nth-child(6) { top: 15%; right: 40%; animation: particleFloat 7s 3s ease-in-out infinite; }
         .cta-particle:nth-child(7) { bottom: 35%; left: 40%; animation: particleFloat 8s 0.8s ease-in-out infinite; width: 9px; height: 9px; }
         .cta-particle:nth-child(8) { top: 70%; right: 10%; animation: particleFloat 6s 2.5s ease-in-out infinite; width: 5px; height: 5px; }
+        @keyframes particleFloat { 0%, 100% { transform: translate(0,0) scale(1); opacity: 0.3; } 25% { transform: translate(15px,-20px) scale(1.3); opacity: 0.6; } 50% { transform: translate(-10px,-35px) scale(0.8); opacity: 0.2; } 75% { transform: translate(20px,-15px) scale(1.1); opacity: 0.5; } }
+        .cta-section h2 { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; position: relative; z-index: 1; }
+        .cta-section p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95; position: relative; z-index: 1; }
+        .cta-buttons { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+        .btn-cta { padding: 1rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); background: white; color: var(--secondary); border: 2px solid white; position: relative; overflow: hidden; }
+        .btn-cta::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.2); transform: translateX(-100%); transition: transform 0.4s ease; }
+        .btn-cta:hover::before { transform: translateX(100%); }
+        .btn-cta:hover { background: transparent; color: white; transform: translateY(-4px) scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
-        @keyframes particleFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            25% { transform: translate(15px, -20px) scale(1.3); opacity: 0.6; }
-            50% { transform: translate(-10px, -35px) scale(0.8); opacity: 0.2; }
-            75% { transform: translate(20px, -15px) scale(1.1); opacity: 0.5; }
-        }
-
-        .cta-section h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-cta {
-            padding: 1rem 2.2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            background: white;
-            color: var(--secondary);
-            border: 2px solid white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(255,255,255,0.2);
-            transform: translateX(-100%);
-            transition: transform 0.4s ease;
-        }
-
-        .btn-cta:hover::before {
-            transform: translateX(100%);
-        }
-
-        .btn-cta:hover {
-            background: transparent;
-            color: white;
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        /* ── FOOTER ── */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 2rem 2rem;
-            margin-top: 5rem;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
-
+        /* ── FOOTER — WHITE ── */
+        .footer { background: #ffffff; color: var(--dark); padding: 4rem 2rem 2rem; margin-top: 5rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
         .footer-logo img { height: 65px; width: auto; }
-
-        .footer-logo-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: white;
-        }
-
+        .footer-logo-text { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary); }
         .footer-logo-text span { color: var(--secondary); }
-        .footer p { opacity: 0.8; line-height: 1.7; }
-
-        .footer h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
+        .footer p { opacity: 0.7; line-height: 1.7; color: var(--gray); }
+        .footer h4 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--primary); }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: var(--gray); text-decoration: none; transition: color 0.3s ease, padding-left 0.3s ease; }
+        .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2rem; text-align: center; opacity: 0.6; color: var(--dark); }
 
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease, padding-left 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            opacity: 0.7;
-        }
-
-        /* ── SCROLL REVEAL FOR INTRO ── */
-        .services-intro {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .services-intro.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .page-header h1 { font-size: 2rem; }
@@ -695,19 +135,9 @@
             .cta-section h2 { font-size: 1.8rem; }
             .floating-shapes { display: none; }
         }
-
-        @media (min-width: 769px) and (max-width: 1100px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Reduced motion preference */
+        @media (min-width: 769px) and (max-width: 1100px) { .services-grid { grid-template-columns: repeat(2,1fr); } }
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
             .service-card { opacity: 1; transform: none; }
             .services-intro { opacity: 1; transform: none; }
             .cta-section { opacity: 1; transform: none; }
@@ -715,8 +145,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Floating background shapes -->
     <div class="floating-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
@@ -726,8 +154,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="images/logo.jpg" alt="BlueSky Siding & Cladding Inc.">
-                <span class="logo-text">Blue Sky Siding <span>& Cladding Inc.</span></span>
+                <img src="images/logo.jpg" alt="BlueSky Siding &amp; Cladding Inc.">
+                <span class="logo-text">Blue Sky Siding <span>&amp; Cladding Inc.</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -757,142 +185,83 @@
             <h2>What We Offer</h2>
             <p>Comprehensive exterior solutions for all your siding and cladding needs throughout Ontario.</p>
         </div>
-
         <div class="services-grid">
-
             <div class="service-card">
                 <div class="service-icon-wrap">🏗️</div>
-                <h3>Siding Installation & Replacement</h3>
+                <h3>Siding Installation &amp; Replacement</h3>
                 <p class="service-desc">Expert installation and full replacement for all siding materials with guaranteed workmanship.</p>
-                <div class="service-tags">
-                    <span>New Installation</span>
-                    <span>Full Replacement</span>
-                    <span>All Materials</span>
-                </div>
+                <div class="service-tags"><span>New Installation</span><span>Full Replacement</span><span>All Materials</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">🏢</div>
                 <h3>Exterior Cladding Systems</h3>
                 <p class="service-desc">Modern cladding systems that enhance aesthetics and weather protection with premium materials.</p>
-                <div class="service-tags">
-                    <span>Metal Panels</span>
-                    <span>Aluminum Composite</span>
-                    <span>Custom Design</span>
-                </div>
+                <div class="service-tags"><span>Metal Panels</span><span>Aluminum Composite</span><span>Custom Design</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">⚙️</div>
-                <h3>Vinyl, Fiber Cement & Metal Siding</h3>
+                <h3>Vinyl, Fiber Cement &amp; Metal Siding</h3>
                 <p class="service-desc">Specialized installation of various siding materials matched to your needs and budget.</p>
-                <div class="service-tags">
-                    <span>Vinyl</span>
-                    <span>Fiber Cement</span>
-                    <span>Metal</span>
-                    <span>Consultation</span>
-                </div>
+                <div class="service-tags"><span>Vinyl</span><span>Fiber Cement</span><span>Metal</span><span>Consultation</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">🏘️</div>
-                <h3>Residential & Commercial Projects</h3>
+                <h3>Residential &amp; Commercial Projects</h3>
                 <p class="service-desc">Tailored solutions for homeowners and commercial property managers — projects of any scale.</p>
-                <div class="service-tags">
-                    <span>Custom Homes</span>
-                    <span>Multi-Residential</span>
-                    <span>Commercial</span>
-                </div>
+                <div class="service-tags"><span>Custom Homes</span><span>Multi-Residential</span><span>Commercial</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">🔧</div>
-                <h3>Siding Repairs & Maintenance</h3>
+                <h3>Siding Repairs &amp; Maintenance</h3>
                 <p class="service-desc">Professional repair and preventative maintenance to extend the lifespan of your siding.</p>
-                <div class="service-tags">
-                    <span>Damage Repair</span>
-                    <span>Maintenance</span>
-                    <span>Inspections</span>
-                </div>
+                <div class="service-tags"><span>Damage Repair</span><span>Maintenance</span><span>Inspections</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">🛡️</div>
-                <h3>Coping & Flashing Systems</h3>
+                <h3>Coping &amp; Flashing Systems</h3>
                 <p class="service-desc">Essential waterproofing systems to keep your building envelope watertight and durable.</p>
-                <div class="service-tags">
-                    <span>Coping</span>
-                    <span>Flashing</span>
-                    <span>Sealing</span>
-                </div>
+                <div class="service-tags"><span>Coping</span><span>Flashing</span><span>Sealing</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">✨</div>
-                <h3>Custom Aluminum & Copper Work</h3>
+                <h3>Custom Aluminum &amp; Copper Work</h3>
                 <p class="service-desc">Custom fabrication and installation of aluminum and copper architectural elements.</p>
-                <div class="service-tags">
-                    <span>Aluminum</span>
-                    <span>Copper</span>
-                    <span>Decorative</span>
-                    <span>Custom</span>
-                </div>
+                <div class="service-tags"><span>Aluminum</span><span>Copper</span><span>Decorative</span><span>Custom</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">💧</div>
-                <h3>Aluminum & Copper Flashing</h3>
+                <h3>Aluminum &amp; Copper Flashing</h3>
                 <p class="service-desc">Premium flashing installations to protect against water infiltration and weather damage.</p>
-                <div class="service-tags">
-                    <span>Aluminum</span>
-                    <span>Copper</span>
-                    <span>Custom-Fit</span>
-                </div>
+                <div class="service-tags"><span>Aluminum</span><span>Copper</span><span>Custom-Fit</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">🎨</div>
                 <h3>Metal Siding Coating</h3>
                 <p class="service-desc">Durable, weather-resistant coating finishes to protect and beautify your metal siding.</p>
-                <div class="service-tags">
-                    <span>Protective Coating</span>
-                    <span>Color Matching</span>
-                    <span>UV Protection</span>
-                </div>
+                <div class="service-tags"><span>Protective Coating</span><span>Color Matching</span><span>UV Protection</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
             <div class="service-card">
                 <div class="service-icon-wrap">📐</div>
                 <h3>Architectural Drawings</h3>
                 <p class="service-desc">Detailed technical drawings and documentation for accurate project planning and execution.</p>
-                <div class="service-tags">
-                    <span>Design Plans</span>
-                    <span>Shop Drawings</span>
-                    <span>As-Built Packages</span>
-                </div>
+                <div class="service-tags"><span>Design Plans</span><span>Shop Drawings</span><span>As-Built Packages</span></div>
                 <a href="quote.html" class="service-link">Get a Quote <span class="arrow">→</span></a>
             </div>
-
         </div>
 
         <div class="cta-section">
-            <div class="cta-particle"></div>
-            <div class="cta-particle"></div>
-            <div class="cta-particle"></div>
-            <div class="cta-particle"></div>
-            <div class="cta-particle"></div>
-            <div class="cta-particle"></div>
-            <div class="cta-particle"></div>
-            <div class="cta-particle"></div>
+            <div class="cta-particle"></div><div class="cta-particle"></div><div class="cta-particle"></div>
+            <div class="cta-particle"></div><div class="cta-particle"></div><div class="cta-particle"></div>
+            <div class="cta-particle"></div><div class="cta-particle"></div>
             <h2>Ready to Start Your Project?</h2>
             <p>Contact us today to discuss your siding and cladding needs.</p>
             <div class="cta-buttons">
@@ -906,8 +275,8 @@
         <div class="footer-container">
             <div>
                 <div class="footer-logo">
-                    <img src="images/logo.jpg" alt="BlueSky Siding & Cladding Inc.">
-                    <span class="footer-logo-text">Blue Sky Siding <span>& Cladding Inc.</span></span>
+                    <img src="images/logo.jpg" alt="BlueSky Siding &amp; Cladding Inc.">
+                    <span class="footer-logo-text">Blue Sky Siding <span>&amp; Cladding Inc.</span></span>
                 </div>
                 <p>Leading provider of premium metal siding and cladding solutions. We combine quality materials with expert craftsmanship to deliver outstanding results.</p>
             </div>
@@ -925,7 +294,7 @@
                 <ul class="footer-links">
                     <li><a href="services.html">Siding Installation</a></li>
                     <li><a href="services.html">Exterior Cladding</a></li>
-                    <li><a href="services.html">Repairs & Maintenance</a></li>
+                    <li><a href="services.html">Repairs &amp; Maintenance</a></li>
                     <li><a href="services.html">Custom Metal Work</a></li>
                 </ul>
             </div>
@@ -940,70 +309,45 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2022 BlueSky Siding & Cladding Inc. All rights reserved.</p>
+            <p>&copy; 2022 BlueSky Siding &amp; Cladding Inc. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // ── Scroll Reveal with staggered delays ──
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // Stagger cards based on their position in the grid
                     const card = entry.target;
                     const cards = [...document.querySelectorAll('.service-card')];
                     const cardIndex = cards.indexOf(card);
-                    const delay = cardIndex * 80; // 80ms stagger
-
-                    setTimeout(() => {
-                        card.classList.add('visible');
-                    }, delay);
-
+                    setTimeout(() => card.classList.add('visible'), cardIndex * 80);
                     observer.unobserve(card);
                 }
             });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-        // Observe all service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            observer.observe(card);
-        });
+        document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
 
-        // Observe intro section
         const introObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    introObserver.unobserve(entry.target);
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); introObserver.unobserve(entry.target); }
             });
         }, { threshold: 0.3 });
 
-        document.querySelectorAll('.services-intro, .cta-section').forEach(el => {
-            introObserver.observe(el);
-        });
+        document.querySelectorAll('.services-intro, .cta-section').forEach(el => introObserver.observe(el));
 
-        // ── Mouse-follow glow effect on cards ──
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                card.style.setProperty('--mouse-x', x + '%');
-                card.style.setProperty('--mouse-y', y + '%');
+                card.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+                card.style.setProperty('--mouse-y', ((e.clientY - rect.top) / rect.height * 100) + '%');
             });
         });
 
-        // ── Parallax floating shapes on scroll ──
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
-            const shapes = document.querySelectorAll('.shape');
-            shapes.forEach((shape, i) => {
-                const speed = 0.03 + (i * 0.015);
-                shape.style.transform = `translateY(${scrollY * speed}px)`;
+            document.querySelectorAll('.shape').forEach((shape, i) => {
+                shape.style.transform = `translateY(${scrollY * (0.03 + i * 0.015)}px)`;
             });
         });
     </script>
